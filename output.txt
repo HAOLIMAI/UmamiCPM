@@ -1,0 +1,84 @@
+D:\Stacking\.venv\Scripts\python.exe D:\Stacking\Stacing617.py 
+训练集列名： ['PepName', 'FRL', 'YYDS', 'TPDM', 'MRNN', 'Real Label']
+验证集列名： ['PepName', 'FRL', 'YYDS', 'TPDM', 'MRNN', 'Real Label']
+训练集样本数: 2149 (鲜味: 978, 非鲜味: 1171)
+验证集样本数: 352 (鲜味: 108, 非鲜味: 244)
+
+============================================================
+网格搜索5折交叉验证最佳结果（训练集）
+============================================================
+LogisticRegression   | 最佳CV AUC = 0.7943 | 最佳参数: {'C': 1}
+RandomForest         | 最佳CV AUC = 0.7948 | 最佳参数: {'max_depth': 5, 'min_samples_split': 5, 'n_estimators': 200}
+GradientBoosting     | 最佳CV AUC = 0.7933 | 最佳参数: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}
+
+============================================================
+独立验证集评估结果（使用最佳参数模型）
+============================================================
+
+--- LogisticRegression (最佳参数: {'C': 1}) ---
+准确率: 0.8239
+AUC:    0.9009
+MCC:     0.6402
+分类报告:
+              precision    recall  f1-score   support
+
+         非鲜味       0.94      0.80      0.86       244
+          鲜味       0.66      0.89      0.76       108
+
+    accuracy                           0.82       352
+   macro avg       0.80      0.84      0.81       352
+weighted avg       0.85      0.82      0.83       352
+
+混淆矩阵:
+[[194  50]
+ [ 12  96]]
+
+--- RandomForest (最佳参数: {'max_depth': 5, 'min_samples_split': 5, 'n_estimators': 200}) ---
+准确率: 0.8352
+AUC:    0.9123
+MCC:     0.6426
+分类报告:
+              precision    recall  f1-score   support
+
+         非鲜味       0.92      0.83      0.88       244
+          鲜味       0.69      0.84      0.76       108
+
+    accuracy                           0.84       352
+   macro avg       0.81      0.84      0.82       352
+weighted avg       0.85      0.84      0.84       352
+
+混淆矩阵:
+[[203  41]
+ [ 17  91]]
+
+--- GradientBoosting (最佳参数: {'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}) ---
+准确率: 0.8438
+AUC:    0.8984
+MCC:     0.6692
+分类报告:
+              precision    recall  f1-score   support
+
+         非鲜味       0.94      0.83      0.88       244
+          鲜味       0.69      0.88      0.78       108
+
+    accuracy                           0.84       352
+   macro avg       0.82      0.85      0.83       352
+weighted avg       0.86      0.84      0.85       352
+
+混淆矩阵:
+[[202  42]
+ [ 13  95]]
+
+特征权重/重要性（基于训练集最佳模型）：
+      LogisticRegression_Coefficient  ...  GradientBoosting_Importance
+FRL                         0.895443  ...                     0.125580
+YYDS                        0.068782  ...                     0.069246
+TPDM                        1.545827  ...                     0.430115
+MRNN                        1.596860  ...                     0.375059
+
+[4 rows x 3 columns]
+
+验证集预测结果已保存到文件：umami_independent_validation_results.xlsx
+文件包含两个sheet：'Validation_Predictions'（独立验证集的预测详情）和 'Feature_Weights_Importance'（特征权重/重要性）。
+
+进程已结束，退出代码为 0
