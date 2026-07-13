@@ -3,4 +3,3 @@ This project implements a stacking ensemble framework for predicting umami pepti
 
 Before running the script, please install the required Python packages (Python 3.7+ recommended) by executing:
 pip install pandas scikit-learn openpyxl
-
